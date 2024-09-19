@@ -1,30 +1,44 @@
 //swap required
 
+import java.util.*;
 
-public class MatrixSwaps {
-    public static void main(String[] args) {
-        int[][] matrix = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 1}
-        };
-        int targetRow = 2;
-        int targetCol = 2;
-        // Find the current position of the 1
-        int currentRow = -1, currentCol = -1;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (matrix[i][j] == 1) {
-                    currentRow = i;
-                    currentCol = j;
-                    break;
-                }
+public class program2 {
+
+    public static int answer(int size,int targetcolumn,int targetrow,int [][]arr){
+        int currentrow=-1;
+        int currentcolumn=-1;
+
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+               if(arr[i][j]==1){
+                currentrow=i;
+                currentcolumn=j;
+               }
             }
-            if (currentRow != -1) break;  // Break out of outer loop if 1 is found
+            if(currentrow!=-1){
+                break;
+            }
         }
-        int swapsRequired = (currentRow - targetRow) +(currentCol - targetCol);
-        System.out.println( swapsRequired);
+        int swap=(currentrow-targetrow)+(currentcolumn-targetcolumn);
+        
+        return swap;
     }
+   public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    int size=sc.nextInt();
+    int targetrow=sc.nextInt();
+    int targetcolumn=sc.nextInt();
+
+    int [][] arr=new int[size][size];
+     
+    for(int i=0;i<size;i++){
+        for(int j=0;j<size;j++){
+            arr[i][j]=sc.nextInt();
+        }
+
+    }
+    int result=answer(size ,targetcolumn,targetrow,arr);
+    System.out.println(result);
+   } 
 }
+
