@@ -1,5 +1,6 @@
 //given an array of size N
-//find the maximum subarray sum of length k
+//find the maximum subarraiy sum of length k(sliding window algorithm)
+
 
 import java.util.*;
 
@@ -11,17 +12,22 @@ class Demo{
                 if(k==0){
                         return 0;
                 }
-		int maxsum=Integer.MIN_VALUE;
-                for(int i=0;i<=size-k;i++){
-			int sum=0;
-			for(int j=i;j<i+k;j++){
 
-				sum+=arr[j];			
-			}
-			if(sum>maxsum){
+                int sum=0;
+                int maxsum=Integer.MIN_VALUE;
+
+		for (int i = 0; i < k; i++) {
+            		sum += arr[i];
+        	}	
+
+        	maxsum = sum;
+                for(int i=1;i<=size-k;i++){
+                	sum=sum-arr[i-1]+arr[i+k-1];
+                	        
+                        if(sum>maxsum){
                            maxsum=sum;
                         }
-                     
+
                 }
                 return maxsum;
         }
@@ -38,4 +44,6 @@ class Demo{
 }
 
 /*input :4
-o/p: 15*/
+o/p: 15
+time complexity =o(N)
+space complexity=o(1)*/
