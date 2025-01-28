@@ -21,6 +21,19 @@ class LinkedList{
 		}
 	}
 
+	void addLast(int data){
+		Node newNode=new Node(data);
+		if(head == null){
+			head=newNode;
+		}else{
+			Node temp=head;
+			while(temp.next!=null){
+				temp=temp.next;
+			}
+			temp.next=newNode;
+		}
+	}
+
 	void printSLL(){
 		if(head==null){
 			System.out.println("Empty LinkedList");
@@ -42,6 +55,7 @@ class Client{
 		ll.addFirst(10);
 		ll.addFirst(20);
 		ll.addFirst(30);
+		ll.addLast(15);
 		ll.printSLL();
         }
 }
