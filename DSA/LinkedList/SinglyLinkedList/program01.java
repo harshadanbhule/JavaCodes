@@ -34,6 +34,40 @@ class LinkedList{
 		}
 	}
 
+	int countNode(){
+		Node temp=head;
+		int count=0;
+
+		while(temp !=null){
+
+			count++;
+			temp=temp.next;
+		}
+		return count;
+	}
+
+	void addAtPos(int pos,int data){
+		if(pos<=0 || pos>= countNode()+2){
+			System.out.println("Wrong input <F12><F12>!");
+		}	
+		
+		if(pos==1){
+			addFirst(data);
+		}else if(pos==countNode()+1){
+			addLast(data);
+		}else{
+			Node newNode=new Node(data);
+			Node temp=head;
+			while(pos-2 !=0){
+				temp=temp.next;
+				pos--;
+			}
+		}
+		newNode.next=temp.next;
+		temp.next=newNode;
+
+	}
+
 	void printSLL(){
 		if(head==null){
 			System.out.println("Empty LinkedList");
@@ -56,6 +90,7 @@ class Client{
 		ll.addFirst(20);
 		ll.addFirst(30);
 		ll.addLast(15);
+		ll.addAtPos(1,25);
 		ll.printSLL();
         }
 }
