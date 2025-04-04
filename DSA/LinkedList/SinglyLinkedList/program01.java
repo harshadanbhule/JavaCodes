@@ -48,7 +48,8 @@ class LinkedList{
 
 	void addAtPos(int pos,int data){
 		if(pos<=0 || pos>= countNode()+2){
-			System.out.println("Wrong input <F12><F12>!");
+			System.out.println("Wrong input !");
+			return;
 		}	
 		
 		if(pos==1){
@@ -62,10 +63,35 @@ class LinkedList{
 				temp=temp.next;
 				pos--;
 			}
-		}
-		newNode.next=temp.next;
-		temp.next=newNode;
 
+			newNode.next=temp.next;
+			temp.next=newNode;
+		}
+	}
+	void delFirst(){
+		if(head==null){
+			System.out.println("Linkedlist is empty");
+			return;
+		}else if(countNode()==1){
+			head=null;
+		}else{
+			head=head.next;
+		}
+	}
+
+	void delLast(){
+		if(head==null){
+                        System.out.println("Linkedlist is empty");
+                        return;
+                }else if(countNode()==1){
+                        head=null;
+                }else{
+                        Node temp=head;
+			while(temp.next.next !=null){
+				temp=temp.next;
+			}
+			temp.next=null;
+                }
 	}
 
 	void printSLL(){
@@ -79,6 +105,28 @@ class LinkedList{
 				temp =temp.next;
 			 }
 		}
+	
+	}
+
+	void delAtPos(int pos){
+		 if(pos<=0 || pos>= countNode()+1){
+                        System.out.println("Wrong input !");
+                        return;
+                }
+
+                if(pos==1){
+                        delFirst();
+                }else if(pos==countNode()){
+                        delLast();
+                }else{
+                        Node temp=head;
+                        while(pos-2 !=0){
+                                temp=temp.next;
+                                pos--;
+                        }
+
+                        temp.next=temp.next.next;
+                }
 	}
 }
 
@@ -91,6 +139,16 @@ class Client{
 		ll.addFirst(30);
 		ll.addLast(15);
 		ll.addAtPos(1,25);
+		ll.addAtPos(-3,25);
 		ll.printSLL();
+		System.out.println("delete First");
+		ll.delFirst();
+		ll.printSLL();
+		System.out.println("delete Last");
+                ll.delLast();
+		ll.printSLL();
+		System.out.println("delete At Position");
+                ll.delAtPos(2);
+                ll.printSLL();
         }
 }
