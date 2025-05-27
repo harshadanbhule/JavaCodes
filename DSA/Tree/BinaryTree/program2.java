@@ -43,6 +43,27 @@ class BinaryTree{
 
 		return leftCount+rightCount+1;
 	}
+
+	int sumNode(Node root){
+		if(root==null){
+			return 0;
+		}
+			
+		int leftSum = sumNode(root.left);
+    		int rightSum = sumNode(root.right);
+
+		return leftSum+rightSum+root.data;
+	}
+	int heightNode(Node root){
+                if(root==null){
+                        return 0;
+                }
+
+                int leftheight = heightNode(root.left);
+                int rightheight = heightNode(root.right);
+
+                return Math.max(leftheight,rightheight)+1;
+        }
 	public static void main(String[] args){
 		int arr[]=new int[]{1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
 		BinaryTree Bt=new BinaryTree();
@@ -51,6 +72,11 @@ class BinaryTree{
 		System.out.println("");
 		int count=Bt.countNode(root);
 		System.out.println("Count : "+count);
+		int sum=Bt.sumNode(root);
+		System.out.println("Sum : "+sum);
+		int height=Bt.heightNode(root);
+		System.out.println("height : "+height);
+	
 	}
 
 }
