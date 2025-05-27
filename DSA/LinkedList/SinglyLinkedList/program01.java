@@ -94,6 +94,24 @@ class LinkedList{
                 }
 	}
 
+	void reverseLL(){
+		if(head==null || head.next==null){
+			return;
+		}else{
+			Node prev=null;
+			Node curr=head;
+			Node forward=null;
+
+			while(curr!=null ){
+				forward=curr.next;
+				curr.next=prev;		
+				prev=curr;
+				curr=forward;
+			}
+			head=prev;
+		}
+	}
+
 	void printSLL(){
 		if(head==null){
 			System.out.println("Empty LinkedList");
@@ -140,6 +158,9 @@ class Client{
 		ll.addLast(15);
 		ll.addAtPos(1,25);
 		ll.addAtPos(-3,25);
+		ll.printSLL();
+		System.out.println("Reverse Llist");
+		ll.reverseLL();
 		ll.printSLL();
 		System.out.println("delete First");
 		ll.delFirst();
